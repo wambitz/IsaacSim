@@ -109,6 +109,11 @@ Use `run_docker.sh` to run the built image. Reference: [NVIDIA Container Docs](h
 
 **Persistent cache**: Extensions and shaders are cached in `_isaac_cache/`. First run downloads ~150 extensions (~3-5 min); subsequent runs are fast.
 
+**Cleaning**: Remove all Docker artifacts (build context and runtime cache):
+```bash
+./tools/docker/clean_docker.sh
+```
+
 ## Important Notes
 
 - **Build Requirements**: The `_build/$CONTAINER_PLATFORM/release` directory must exist before running the Docker preparation. Use `--build` or `--docker-build` option if you haven't built Isaac Sim yet.
@@ -126,4 +131,3 @@ Use `run_docker.sh` to run the built image. Reference: [NVIDIA Container Docs](h
 - **Docker build fails**: Check that Docker daemon is running and you have sufficient disk space.
 - **GCC version not supported (Ubuntu 24.04+)**: Use `--docker-build` which includes GCC 11.
 - **No GUI window**: Check `xhost +local:docker` ran successfully and `$DISPLAY` is set.
-- **Permission denied on cache**: `run_docker.sh` auto-fixes with `sudo chown`.

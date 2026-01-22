@@ -123,10 +123,6 @@ if [[ "$DOCKER_BUILD" == "true" ]]; then
         echo "Containerized build failed, exiting with error code 1" >&2
         exit 1
     fi
-    
-    # Prepare runtime cache directory for run_docker.sh (container runs as uid 1234)
-    mkdir -p _isaac_cache
-    sudo chown -R 1234:1234 _isaac_cache 2>/dev/null || true
 fi
 
 # Check that _build/linux-x86_64 or _build/linux-aarch64 exists
